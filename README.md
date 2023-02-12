@@ -1,2 +1,3 @@
-# aRt-botsin-space
-Repository for aRt bot used on Mastodon.
+# aRt@botsin.space
+
+Repository for the aRt bot used on Mastodon.
