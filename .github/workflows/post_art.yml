@@ -39,5 +39,5 @@ jobs:
           source("toot_art.R")
         shell: Rscript {0}
         env:
-          BEARER: ${{ secrets.MASTODON_TOKEN }}
+          MASTODON_TOKEN: ${{ secrets.MASTODON_TOKEN }}
         
