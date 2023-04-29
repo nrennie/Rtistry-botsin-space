@@ -1,9 +1,9 @@
 # Load packages -----------------------------------------------------------
 
-library(aRt)
-library(usefunc)
 library(rtoot)
 library(ggplot2)
+library(aRt)
+library(usefunc)
 
 # Create aRt --------------------------------------------------------------
 
