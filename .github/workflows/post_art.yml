@@ -29,7 +29,7 @@ jobs:
           remotes::install_github("nrennie/aRt")
         shell: Rscript {0}
         
-     - name: Install remote dependencies on usefunc
+      - name: Install remote dependencies on usefunc
         run: |
           remotes::install_github("nrennie/usefunc")
         shell: Rscript {0}
