@@ -13,7 +13,8 @@ ss <- as.numeric(Sys.time())
 x <- sample(10:30, size = 1)
 d <- stats::runif(1, 0, 1)
 g <- aRt::shatter(n_x = x, n_y = x, decay = d, colour = col1, bg_col = col2, s = ss)
-ggsave(filename = "images/img.png",
+temp_file <- tempfile(fileext = ".png")
+ggsave(filename = temp_file,
        plot = g,
        width = 600,
        height = 600,
@@ -39,11 +40,7 @@ mastodon_token <- structure(
 
 rtoot::post_toot(
   status   = status,
-  media    = "images/img.png",
+  media    = temp_file,
   alt_text = alt_text,
   token    = mastodon_token
 )
-
-# Clean up file -----------------------------------------------------------
-
-file.remove("images/img.png")
