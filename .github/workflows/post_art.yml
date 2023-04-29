@@ -12,9 +12,9 @@ jobs:
     runs-on: ubuntu-latest
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+      MASTODON_TOKEN: ${{ secrets.MASTODON_TOKEN }}
     steps:
       - uses: actions/checkout@v2
-
       - uses: r-lib/actions/setup-r@v2
         with:
           use-public-rspm: true
@@ -35,9 +35,4 @@ jobs:
         shell: Rscript {0}
         
       - name: Post art
-        run: |
-          source("toot_art.R")
-        shell: Rscript {0}
-        env:
-          MASTODON_TOKEN: ${{ secrets.MASTODON_TOKEN }}
-        
+        run: Rscript toot_art.R
