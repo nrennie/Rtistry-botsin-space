@@ -1,0 +1,43 @@
+name: Post art
+
+on:
+  schedule:
+    - cron: "0 10 1 * *"
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: r-lib/actions/setup-r@v2
+        with:
+          use-public-rspm: true
+          
+      - name: Install dependencies
+        run: |
+          install.packages(c("rtoot", "ggplot2", "remotes"))
+        shell: Rscript {0}
+        
+      - name: Install remote dependencies on aRt
+        run: |
+          remotes::install_github("nrennie/aRt")
+        shell: Rscript {0}
+        
+     - name: Install remote dependencies on usefunc
+        run: |
+          remotes::install_github("nrennie/usefunc")
+        shell: Rscript {0}
+        
+      - name: Post art
+        run: |
+          source("toot_art.R")
+        shell: Rscript {0}
+        env:
+          BEARER: ${{ secrets.MASTODON_TOKEN }}
+        
