@@ -19,6 +19,11 @@ jobs:
         with:
           use-public-rspm: true
           
+      - name: Install magick libs
+        run: |
+          sudo apt-get -qq update
+          sudo apt-get -y install libmagick++-dev
+          
       - name: Install dependencies
         run: |
           install.packages(c("rtoot", "ggplot2", "remotes", "PrettyCols"))
