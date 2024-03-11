@@ -6,37 +6,37 @@ library(aRt)
 library(usefunc)
 library(PrettyCols)
 
+
+# Source utils functions --------------------------------------------------
+
+source("random_aRt.R")
+
+
 # Create aRt --------------------------------------------------------------
 
-ss <- as.numeric(Sys.time())
-art_type <- sample(c("shatter", "mirrored"), size = 1)
+art_type <- sample(c("shatter", "mirrored", "tessellation", "windows"), size = 1)
 
 if (art_type == "shatter") {
-  col1 <- usefunc::random_hex(n = 1)
-  col2 <- usefunc::complementary_colour(col1)
-  x <- sample(10:30, size = 1)
-  d <- stats::runif(1, 0, 1)
-  g <- aRt::shatter(n_x = x, n_y = x, decay = d, colour = col1, bg_col = col2, s = ss)
-  temp_file <- tempfile(fileext = ".png")
-  ggsave(filename = temp_file,
-         plot = g,
-         width = 600,
-         height = 600,
-         units = "px")
+  g <- random_shatter()
 } else {
   if (art_type == "mirrored") {
-    n <- sample(5:20, size = 1)
-    w <- sample(2:6, size = 1)
-    col_palette <- PrettyCols::prettycols(sample(names(PrettyCols::PrettyColsPalettes), size = 1))
-    g <- aRt::mirrored(n = n, w = w, col_palette = col_palette, s = ss)
-    temp_file <- tempfile(fileext = ".png")
-    ggsave(filename = temp_file,
-           plot = g,
-           width = 600,
-           height = 600,
-           units = "px")
+    g <- random_mirrored()
+  } else {
+    if (art_type == "tessellation") {
+      g <- random_random_tessellation()
+    } else {
+      if (art_type == "windows") {
+        g <- random_window_boxes()
+      }
+    }
   }
 }
+temp_file <- tempfile(fileext = ".png")
+ggsave(filename = temp_file,
+       plot = g,
+       width = 600,
+       height = 600,
+       units = "px")
 
 # Text for post -----------------------------------------------------------
 
