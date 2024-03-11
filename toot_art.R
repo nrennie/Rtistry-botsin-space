@@ -14,7 +14,9 @@ source("random_aRt.R")
 
 # Create aRt --------------------------------------------------------------
 
-art_type <- sample(c("shatter", "mirrored", "tessellation", "windows"), size = 1)
+art_type <- sample(
+  c("shatter", "mirrored", "tessellation", "windows", "crosshatch"),
+  size = 1)
 
 if (art_type == "shatter") {
   g <- random_shatter()
@@ -27,6 +29,10 @@ if (art_type == "shatter") {
     } else {
       if (art_type == "windows") {
         g <- random_window_boxes()
+      } else {
+        if (art_type == "crosshatch") {
+          g <- random_crosshatch()
+        }
       }
     }
   }
