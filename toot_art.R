@@ -46,7 +46,7 @@ ggsave(filename = temp_file,
 
 # Text for post -----------------------------------------------------------
 
-status <- "Today's Rtistry created with #RStats! #GenArtClub"
+status <- "Today's #Rtistry created with #RStats!"
 alt_text <- "A square generative art piece consisting of a grid of polygons."
 
 # Mastodon auth -----------------------------------------------------------
