@@ -15,7 +15,7 @@ source("random_aRt.R")
 # Create aRt --------------------------------------------------------------
 
 art_type <- sample(
-  c("shatter", "mirrored", "tessellation", "windows", "crosshatch"),
+  c("shatter", "mirrored", "tessellation", "windows", "crosshatch", "stackture"),
   size = 1)
 
 if (art_type == "shatter") {
@@ -32,6 +32,10 @@ if (art_type == "shatter") {
       } else {
         if (art_type == "crosshatch") {
           g <- random_crosshatch()
+        } else {
+          if (art_type == "stackture") {
+            g <- random_stackture()
+          }
         }
       }
     }
