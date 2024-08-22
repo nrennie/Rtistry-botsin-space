@@ -26,7 +26,7 @@ jobs:
           
       - name: Install dependencies
         run: |
-          install.packages(c("rtoot", "ggplot2", "remotes", "PrettyCols"))
+          install.packages(c("rtoot", "ggplot2", "remotes", "PrettyCols", "glue"))
         shell: Rscript {0}
         
       - name: Install remote dependencies on aRt
