@@ -19,22 +19,34 @@ art_type <- sample(
   size = 1)
 
 if (art_type == "shatter") {
-  g <- random_shatter()
+  art <- random_shatter()
+  g <- art$g
+  code <- art$code
 } else {
   if (art_type == "mirrored") {
-    g <- random_mirrored()
+    art <- random_mirrored()
+    g <- art$g
+    code <- art$code
   } else {
     if (art_type == "tessellation") {
-      g <- random_random_tessellation()
+      art <- random_random_tessellation()
+      g <- art$g
+      code <- art$code
     } else {
       if (art_type == "windows") {
-        g <- random_window_boxes()
+        art <- random_window_boxes()
+        g <- art$g
+        code <- art$code
       } else {
         if (art_type == "crosshatch") {
-          g <- random_crosshatch()
+          art <- random_crosshatch()
+          g <- art$g
+          code <- art$code
         } else {
           if (art_type == "stackture") {
-            g <- random_stackture()
+            art <- random_stackture()
+            g <- art$g
+            code <- art$code
           }
         }
       }
@@ -50,7 +62,8 @@ ggsave(filename = temp_file,
 
 # Text for post -----------------------------------------------------------
 
-status <- "Today's #Rtistry created with #RStats!"
+status <- glue::glue(
+  "Today's #Rtistry created with #RStats!\n\nCode: {code}")
 alt_text <- "A square generative art piece consisting of a grid of polygons."
 
 # Mastodon auth -----------------------------------------------------------
