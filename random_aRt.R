@@ -1,3 +1,13 @@
+write_palette <- function(palette) {
+  paste0(
+    "c(",
+    paste0(
+      paste0("'", palette, "'"),
+      collapse = ", "
+    ), ")"
+  )
+}
+
 random_shatter <- function() {
   ss <- as.numeric(Sys.time())
   col1 <- usefunc::random_hex(n = 1)
@@ -21,7 +31,7 @@ random_mirrored <- function() {
   col_palette <- PrettyCols::prettycols(sample(names(PrettyCols::PrettyColsPalettes), size = 1))
   g <- aRt::mirrored(n = n, w = w, col_palette = col_palette, s = ss)
   code <- glue::glue(
-    "aRt::mirrored(n = {n}, w = {w}, col_palette = {col_palette}, s = {ss})"
+    "aRt::mirrored(n = {n}, w = {w}, col_palette = {write_palette(col_palette)}, s = {ss})"
   )
   return(list(g = g, code = code))
 }
@@ -41,7 +51,7 @@ random_random_tessellation <- function() {
     s = ss
   )
   code <- glue::glue(
-    "aRt::random_tessellation(n_x = {n}, n_y = {n}, deg_jitter = {dj}, line_col = {bg_col}, bg_col = {bg_col}, col_palette = {col_palette}, s = {ss})"
+    "aRt::random_tessellation(n_x = {n}, n_y = {n}, deg_jitter = {dj}, line_col = {bg_col}, bg_col = {bg_col}, col_palette = {write_palette(col_palette)}, s = {ss})"
   )
   return(list(g = g, code = code))
 }
@@ -55,7 +65,7 @@ random_window_boxes <- function() {
     linewidth = lwd, col_palette = col_palette
   )
   code <- glue::glue(
-    "aRt::window_boxes(n_x = {n}, n_y = {n}, linewidth = {lwd}, col_palette = {col_palette})"
+    "aRt::window_boxes(n_x = {n}, n_y = {n}, linewidth = {lwd}, col_palette = {write_palette(col_palette)})"
   )
   return(list(g = g, code = code))
 }
@@ -79,7 +89,7 @@ random_crosshatch <- function() {
     s = ss
   )
   code <- glue::glue(
-    "aRt::crosshatch(n_x = {n}, n_y = {n}, n_lines = {n_lines}, line_overlap = {overlap}, line_slope = {slope}, linewidth = {lwd}, col_palette = {col_palette}, bg_col = {bg_col}, s = {ss})"
+    "aRt::crosshatch(n_x = {n}, n_y = {n}, n_lines = {n_lines}, line_overlap = {overlap}, line_slope = {slope}, linewidth = {lwd}, col_palette = {write_palette(col_palette)}, bg_col = {bg_col}, s = {ss})"
   )
   return(list(g = g, code = code))
 }
@@ -100,7 +110,7 @@ random_stackture <- function() {
     s = ss
   )
   code <- glue::glue(
-    "aRt::stackture(n_x = {n}, n_y = {n}, min_height = 1, max_height = {h}, min_width = 1, max_width = {h}, interpolate = TRUE, col_palette = {col_palette}, bg_col = {bg_col}, s = {ss})"
+    "aRt::stackture(n_x = {n}, n_y = {n}, min_height = 1, max_height = {h}, min_width = 1, max_width = {h}, interpolate = TRUE, col_palette = {write_palette(col_palette)}, bg_col = {bg_col}, s = {ss})"
   )
   return(list(g = g, code = code))
 }
