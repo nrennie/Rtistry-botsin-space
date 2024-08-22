@@ -8,7 +8,10 @@ random_shatter <- function() {
     n_x = x, n_y = x, decay = d,
     colour = col1, bg_col = col2, s = ss
   )
-  return(g)
+  code <- glue::glue(
+    "aRt::shatter(n_x = {x}, n_y = {x}, decay = {d}, colour = {col1}, bg_col = {col2}, s = {ss})"
+  )
+  return(list(g = g, code = code))
 }
 
 random_mirrored <- function() {
@@ -17,7 +20,10 @@ random_mirrored <- function() {
   w <- sample(2:6, size = 1)
   col_palette <- PrettyCols::prettycols(sample(names(PrettyCols::PrettyColsPalettes), size = 1))
   g <- aRt::mirrored(n = n, w = w, col_palette = col_palette, s = ss)
-  return(g)
+  code <- glue::glue(
+    "aRt::mirrored(n = {n}, w = {w}, col_palette = {col_palette}, s = {ss})"
+  )
+  return(list(g = g, code = code))
 }
 
 random_random_tessellation <- function() {
@@ -34,7 +40,10 @@ random_random_tessellation <- function() {
     col_palette = col_palette,
     s = ss
   )
-  return(g)
+  code <- glue::glue(
+    "aRt::random_tessellation(n_x = {n}, n_y = {n}, deg_jitter = {dj}, line_col = {bg_col}, bg_col = {bg_col}, col_palette = {col_palette}, s = {ss})"
+  )
+  return(list(g = g, code = code))
 }
 
 random_window_boxes <- function() {
@@ -45,7 +54,10 @@ random_window_boxes <- function() {
     n_x = n, n_y = n,
     linewidth = lwd, col_palette = col_palette
   )
-  return(g)
+  code <- glue::glue(
+    "aRt::window_boxes(n_x = {n}, n_y = {n}, linewidth = {lwd}, col_palette = {col_palette})"
+  )
+  return(list(g = g, code = code))
 }
 
 random_crosshatch <- function() {
@@ -66,7 +78,10 @@ random_crosshatch <- function() {
     bg_col = bg_col,
     s = ss
   )
-  return(g)
+  code <- glue::glue(
+    "aRt::crosshatch(n_x = {n}, n_y = {n}, n_lines = {n_lines}, line_overlap = {overlap}, line_slope = {slope}, linewidth = {lwd}, col_palette = {col_palette}, bg_col = {bg_col}, s = {ss})"
+  )
+  return(list(g = g, code = code))
 }
 
 random_stackture <- function() {
@@ -84,5 +99,8 @@ random_stackture <- function() {
     bg_col = bg_col,
     s = ss
   )
-  return(g)
+  code <- glue::glue(
+    "aRt::stackture(n_x = {n}, n_y = {n}, min_height = 1, max_height = {h}, min_width = 1, max_width = {h}, interpolate = TRUE, col_palette = {col_palette}, bg_col = {bg_col}, s = {ss})"
+  )
+  return(list(g = g, code = code))
 }
