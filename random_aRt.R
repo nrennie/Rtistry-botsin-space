@@ -19,7 +19,7 @@ random_shatter <- function() {
     colour = col1, bg_col = col2, s = ss
   )
   code <- glue::glue(
-    "aRt::shatter(n_x = {x}, n_y = {x}, decay = {d}, colour = {col1}, bg_col = {col2}, s = {ss})"
+    "aRt::shatter(n_x = {x}, n_y = {x}, decay = {d}, colour = '{col1}', bg_col = '{col2}', s = {ss})"
   )
   return(list(g = g, code = code))
 }
@@ -51,7 +51,7 @@ random_random_tessellation <- function() {
     s = ss
   )
   code <- glue::glue(
-    "aRt::random_tessellation(n_x = {n}, n_y = {n}, deg_jitter = {dj}, line_col = {bg_col}, bg_col = {bg_col}, col_palette = {write_palette(col_palette)}, s = {ss})"
+    "aRt::random_tessellation(n_x = {n}, n_y = {n}, deg_jitter = {dj}, line_col = '{bg_col}', bg_col = '{bg_col}', col_palette = {write_palette(col_palette)}, s = {ss})"
   )
   return(list(g = g, code = code))
 }
@@ -89,7 +89,7 @@ random_crosshatch <- function() {
     s = ss
   )
   code <- glue::glue(
-    "aRt::crosshatch(n_x = {n}, n_y = {n}, n_lines = {n_lines}, line_overlap = {overlap}, line_slope = {slope}, linewidth = {lwd}, col_palette = {write_palette(col_palette)}, bg_col = {bg_col}, s = {ss})"
+    "aRt::crosshatch(n_x = {n}, n_y = {n}, n_lines = {n_lines}, line_overlap = {overlap}, line_slope = {slope}, linewidth = {lwd}, col_palette = {write_palette(col_palette)}, bg_col = '{bg_col}', s = {ss})"
   )
   return(list(g = g, code = code))
 }
@@ -110,7 +110,7 @@ random_stackture <- function() {
     s = ss
   )
   code <- glue::glue(
-    "aRt::stackture(n_x = {n}, n_y = {n}, min_height = 1, max_height = {h}, min_width = 1, max_width = {h}, interpolate = TRUE, col_palette = {write_palette(col_palette)}, bg_col = {bg_col}, s = {ss})"
+    "aRt::stackture(n_x = {n}, n_y = {n}, min_height = 1, max_height = {h}, min_width = 1, max_width = {h}, interpolate = TRUE, col_palette = {write_palette(col_palette)}, bg_col = '{bg_col}', s = {ss})"
   )
   return(list(g = g, code = code))
 }
